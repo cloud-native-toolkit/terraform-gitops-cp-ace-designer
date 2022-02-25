@@ -1,0 +1,29 @@
+apiVersion: appconnect.ibm.com/v1beta1
+kind: DesignerAuthoring
+metadata:
+  name: {{ .Values.ibm_ace_designer.name }}
+spec:
+  license:
+    {{- toYaml .Values.ibm_ace_designer.license | nindent 4 }}
+  couchdb:
+    replicas: {{ .Values.ibm_ace_designer.couchdb.replicas }}
+    storage:
+      {{- toYaml .Values.ibm_ace_designer.couchdb.storage | nindent 6 }}
+  designerFlowsOperationMode: {{ .Values.ibm_ace_designer.designerFlowsOperationMode }}
+  useCommonServices: true
+  version: {{ .Values.ibm_ace_designer.version }}
+
+  {{- if .Values.ibm_ace_designer.isMapAssistRequired }}
+  designerMappingAssist:
+    enabled: true
+    incrementalLearning:
+      schedule: {{ .Values.ibm_ace_designer.designerMappingAssist.incrementalLearning.schedule }}
+      useIncrementalLearning: true
+      storage:
+        {{- toYaml .Values.ibm_ace_designer.designerMappingAssist.incrementalLearning.storage | nindent 8 }}
+  {{- end }}      
+
+
+
+
+

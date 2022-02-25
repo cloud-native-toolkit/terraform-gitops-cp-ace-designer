@@ -1,0 +1,24 @@
+ibm_ace_designer:
+  isMapAssistRequired: true
+  name: ace-designer
+  license:
+    accept: true
+    license: L-KSBM-C87FU2
+    use: CloudPakForIntegrationNonProduction
+  couchdb:
+    replicas: 1
+    storage:
+      size: 10Gi
+      type: persistent-claim
+      class: ibmc-block-gold
+  designerFlowsOperationMode: local
+  useCommonServices: true
+  version: 12.0.2.0-r2
+  designerMappingAssist:
+    enabled: true
+    incrementalLearning:
+      schedule: Every 15 days
+      useIncrementalLearning: true
+      storage:
+        type: persistent-claim
+        class: ibmc-file-gold-gid
