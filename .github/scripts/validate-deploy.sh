@@ -52,14 +52,14 @@ fi
 
 DEPLOYMENT="${COMPONENT_NAME}-${BRANCH}"
 ACE_DESIGNER_CRD="designerauthorings.appconnect.ibm.com"
-TIMEOUT=20
+TIMEOUT=75
 count=0
 DESIRED_STATE="Ready"
 
 until [[ $(kubectl get ${ACE_DESIGNER_CRD}  -n  ${NAMESPACE} -o jsonpath="{range .items[*]}{.status.phase}{end}") == ${DESIRED_STATE} ||  $count -eq ${TIMEOUT} ]]; do
   echo "Waiting for ibm-ace-${ACE_DESIGNER_CRD} to come up in ${NAMESPACE}"
   count=$((count + 1))
-  sleep 30
+  sleep 60
 done
 
 if [[ $count -eq 20 ]]; then

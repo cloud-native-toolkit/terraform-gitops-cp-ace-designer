@@ -2,7 +2,7 @@ module "gitops_module" {
   source = "./module"
 
 # ACE Designer Instance should be kicked-off after ACE Operator & cp4i-dependency
- depends_on = [module.cp_ace_operator,module.cp4i-dependencies]
+ depends_on = [module.cp_ace_operator,module.cp4i-dependencies,module.cp-platformnavigator]
  
   gitops_config = module.gitops.gitops_config
   git_credentials = module.gitops.git_credentials
