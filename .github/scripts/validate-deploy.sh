@@ -52,7 +52,7 @@ fi
 
 DEPLOYMENT="${COMPONENT_NAME}-${BRANCH}"
 ACE_DESIGNER_CRD="designerauthorings.appconnect.ibm.com"
-TIMEOUT=75
+TIMEOUT=60
 count=0
 DESIRED_STATE="Ready"
 
