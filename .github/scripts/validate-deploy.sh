@@ -39,7 +39,7 @@ count=0
 until kubectl get namespace "${NAMESPACE}" 1> /dev/null 2> /dev/null || [[ $count -eq 20 ]]; do
   echo "Waiting for namespace: ${NAMESPACE}"
   count=$((count + 1))
-  sleep 15
+  sleep 60
 done
 
 if [[ $count -eq 20 ]]; then
@@ -62,7 +62,9 @@ until [[ $(kubectl get ${ACE_DESIGNER_CRD}  -n  ${NAMESPACE} -o jsonpath="{range
   sleep 60
 done
 
-if [[ $count -eq 20 ]]; then
+
+if [[ $count -eq 60 ]]; then
+
   echo "Timed out waiting for ${ACE_DESIGNER_CRD} in ${NAMESPACE}"
   kubectl get all -n "${NAMESPACE}"
   exit 1
