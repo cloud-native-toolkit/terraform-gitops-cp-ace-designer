@@ -62,7 +62,9 @@ until [[ $(kubectl get ${ACE_DESIGNER_CRD}  -n  ${NAMESPACE} -o jsonpath="{range
   sleep 60
 done
 
+
 if [[ $count -eq 60 ]]; then
+
   echo "Timed out waiting for ${ACE_DESIGNER_CRD} in ${NAMESPACE}"
   kubectl get all -n "${NAMESPACE}"
   exit 1
