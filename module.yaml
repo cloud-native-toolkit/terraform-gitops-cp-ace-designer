@@ -35,10 +35,12 @@ versions:
         refs:
           - source: github.com/cloud-native-toolkit/terraform-gitops-cp-app-connect.git
             version: '>= 1.0.0'    
-      - id: platform-navigator
-        refs:
-          - source: github.com/cloud-native-toolkit/terraform-gitops-cp-platform-navigator.git
-            version: '>= 1.0.2'
+      # Purposely I'm commenting to avoid creating a PlatformNavigator in the same namespace where ace-designer exist.
+      # We can not have more than one PlatformNavigator instance if we install all CP4i operator @Cluster Scope 
+      # - id: platform-navigator
+      #   refs:
+      #     - source: github.com/cloud-native-toolkit/terraform-gitops-cp-platform-navigator.git
+      #       version: '>= 1.0.2'
     variables:
       - name: gitops_config
         moduleRef:

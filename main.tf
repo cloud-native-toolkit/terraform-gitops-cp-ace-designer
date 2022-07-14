@@ -1,13 +1,11 @@
 locals {
 
   # If decided to create the ACE Designer instance in the dedicated namepace 
-  namespace = var.is_ace_designer_required_dedicated_ns ? var.ace_designer_instance_namespace : var.namespace
+  namespace = var.namespace
   is_map_assist_enabled=var.is_map_assist_required
   
   name          = "gitops-cp-ace-designer"
   bin_dir       = module.setup_clis.bin_dir
-  
-  
   base_name          = "ibm-ace"
   
   # If the name of an ACE Designer is overridden then choose the overridden value
@@ -56,7 +54,7 @@ locals {
   
   
   layer = "services"
-  type  = "base"
+  type  = "instances"
   application_branch = "main"
   values_file = "values.yaml"      
 
@@ -64,16 +62,6 @@ locals {
   layer_config = var.gitops_config[local.layer]
 }
 
-
-# #ACE Designer instance namespace creation
-# module "ace_designer_instance_ns" {
-#     source = "github.com/cloud-native-toolkit/terraform-gitops-namespace.git"
-
-#   gitops_config = var.gitops_config
-#   git_credentials = var.git_credentials
-#   name = local.namespace
-  
-# }
 
 module setup_clis {
   source = "github.com/cloud-native-toolkit/terraform-util-clis.git"
@@ -83,13 +71,10 @@ module setup_clis {
 module pull_secret {
   source = "github.com/cloud-native-toolkit/terraform-gitops-pull-secret"
 
-  #depends_on = [module.ace_designer_instance_ns]
-
   gitops_config = var.gitops_config
   git_credentials = var.git_credentials
   server_name = var.server_name
   kubeseal_cert = var.kubeseal_cert
-  #namespace = var.namespace
   namespace=local.namespace
   docker_username = "cp"
   docker_password = var.entitlement_key

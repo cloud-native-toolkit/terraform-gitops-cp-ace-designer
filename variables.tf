@@ -87,19 +87,6 @@ variable "entitlement_key" {
 }
 
 #Module Specific extension
-variable "is_ace_designer_required_dedicated_ns" {
-  type = bool
-  description = "If ACE Designer instance need to be deployed in dedicated namespace"
-  default = false
-
-  
-}
-variable "ace_designer_instance_namespace" {
-  type = string
-  description = "It is beeter to manage ACE Designer instance workload in a dedicated namespace"
-  default = "gitops-cp-ace-designer"
-}
-
 variable "ace_version" {
   type        = string
   description = "The version of the ACE Designer should be installed"
