@@ -57,7 +57,6 @@ locals {
   application_branch = "main"
   values_file = "values.yaml"      
 
-
   layer_config = var.gitops_config[local.layer]
 }
 
