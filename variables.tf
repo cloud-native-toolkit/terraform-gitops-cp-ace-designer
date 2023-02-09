@@ -118,16 +118,14 @@ variable "ace_designer_instance_name" {
   default = ""
   
 }
+
 #If ACE Designer Instance needed to be overridden then use this
 variable "storage_class_4_couchdb" {
   type = string
   description = "RWO Accessmode supported Storageclass"
-  default = "portworx-db2-rwo-sc"
-  
 }
+
 variable "storage_class_4_mapassist" {
   type = string
   description = "RWX Accessmode supported Storageclass"
-  default = "portworx-rwx-gp-sc"
-  
 }
