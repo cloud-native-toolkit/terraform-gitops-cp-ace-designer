@@ -22,8 +22,8 @@ module "gitops_module" {
 
  # Mandatory requirement
  is_map_assist_required=false
- storage_class_4_couchdb="ibmc-vpc-block-10iops-tier"
- storage_class_4_mapassist="ocs-storagecluster-cephfs"
+ storage_class_4_couchdb=module.storage.rwo_storage_class
+ storage_class_4_mapassist=module.storage.rwx_storage_class
 
 }
 
